@@ -2,13 +2,12 @@
 
 ```java
 
-	@Test
-	public void hoeZietDeJavaSyntaxErEigenlijkUit() {
+	@Test 
+	void hoeZietDeJavaSyntaxErEigenlijkUit() {
 		// Met { .... } definieren we een code blok
 		System.out.println("Start van code blok");
 			
-		{
-			//blocken kun je ook nesten
+		{   //blocken kun je ook nesten
 			System.out.println("Start van inner code blok");
 			System.out.println("Einde van inner code blok");
 		}
@@ -23,16 +22,13 @@
 ### Scope van variabelen
 
 ```java
-@Test
-public void hoeZitHetMetVariabelenEnCodeBlocken() {
+void hoeZitHetMetVariabelenEnCodeBlocken() {
 	System.out.println("Start van code blok");
 	boolean outerBlokBoolean=true;
-	
 	System.out.println("Outer block boolean = " + outerBlokBoolean);	
 	{
 		System.out.println("Start van inner code blok");
 		boolean innerBlokBoolean=true;
-		
 		System.out.println("Inner block boolean = " + innerBlokBoolean);
 		System.out.println("Outer block boolean = " + outerBlokBoolean);
 		System.out.println("Einde van inner code blok");
@@ -61,16 +57,14 @@ public void hoeZitHetMetVariabelenEnCodeBlocken() {
 ### Een blok wel of niet uitvoeren
 
 ```java	
-@Test
-public void hoeKunnenWeEenBlockConditioneelUitvoeren() {
+void hoeKunnenWeEenBlockConditioneelUitvoeren() {
 	System.out.println("Start van code blok");
 	
 	boolean innerBlockUitvoeren=false;
 	
 	//Het geneste block willen we conditioneel uitvoeren
-	//Syntax if
-	// if(conditie){ statements} -> 
-	//als conditie true is dan worden statements
+	//Syntax:if(conditie){ statements} -> 
+	//als conditie true dan statements uitvoeren
 	if(innerBlockUitvoeren) 
 	{
 		System.out.println("Start van inner code blok");
@@ -87,12 +81,9 @@ public void hoeKunnenWeEenBlockConditioneelUitvoeren() {
 ### Of het een of het andere
 
 ```java
-	@Test
-	public void hoeKunnenHetEneBlockOfHetAndereBlockConditioneelUitvoeren() {
+void hoeKunnenHetEneBlockOfHetAndereBlockConditioneelUitvoeren() {
 		System.out.println("Start van code blok");
-		
 		boolean uitvoerenBlok1=true;
-
 		if(uitvoerenBlok1)
 		{
 			System.out.println("Start van inner code blok1");
@@ -103,7 +94,6 @@ public void hoeKunnenWeEenBlockConditioneelUitvoeren() {
 			System.out.println("Start van inner code blok2");
 			System.out.println("Einde van inner code blok2");
 		}
-
 		System.out.println("Einde van code blok");	
 	}
 ```
@@ -116,26 +106,18 @@ public void hoeKunnenWeEenBlockConditioneelUitvoeren() {
 
 
 ```java
-
-	@Test
-	public void gebruikVanSyntaxConventies() {
+void gebruikVanSyntaxConventies() {
 		System.out.println("Start van code blok");
 		
 		boolean uitvoerenBlok1=true;
-		
 		if(uitvoerenBlok1){
-			
 			System.out.println("Start van inner code blok1");
 			System.out.println("Einde van inner code blok1");
-			
 		}else{
-			
 			System.out.println("Start van inner code blok2");
 			System.out.println("Einde van inner code blok2");
 		}
-	
 		System.out.println("Einde van code blok");
-		
 	}
 ```
 
@@ -146,8 +128,7 @@ public void hoeKunnenWeEenBlockConditioneelUitvoeren() {
 ### Herhalen van een blok
 
 ```java
-	@Test
-	public void hoeKunnenWeHetGenesteBlokEenAantalKerenHerhalen() {
+void hoeKunnenWeHetGenesteBlokEenAantalKerenHerhalen() {
 		// Met { .... } definieren we een blok
 		System.out.println("Start van code blok");
 		//Voorbeeld van oneindige loop	
@@ -176,7 +157,8 @@ public void hoeKunnenWeHetGenesteBlok10KeerHerhalen() {
 	boolean conditie=true;
 	while(conditie)
 	{	
-		System.out.println("loopNr = " + loopNr + " " + "aatalHerhalingen = " + aantalHerhalingen);
+		System.out.println("loopNr = " + loopNr
+		 + " aantalHerhalingen = " + aantalHerhalingen);
 		conditie=loopNr <= aantalHerhalingen;
 		loopNr=loopNr+1;
 	}
@@ -190,7 +172,6 @@ public void hoeKunnenWeHetGenesteBlok10KeerHerhalen() {
 ### Restructure code in while statement
 
 ```java
-
 int aantalHerhalingen=10;
 int loopNr=1;
 boolean conditie=true;
@@ -200,7 +181,6 @@ while(conditie)
 	conditie=loopNr <= aantalHerhalingen;
 	loopNr=loopNr+1;
 }// restructure into 
-
 while(conditie=loopNr <= aantalHerhalingen)
 {
 	// Doe useful work
@@ -217,13 +197,13 @@ while(conditie=loopNr <= aantalHerhalingen)
 ```java
 int aantalHerhalingen=10;
 int loopNr=1;
-while(conditie=loopNr <= aantalHerhalingen)
+while(loopNr <= aantalHerhalingen)
 {
 	// Doe useful work
 	loopNr=loopNr+1;
 }
 //translate into:
-for(int loopNr=1;conditie=loopNr <= aantalHerhalingen;loopNr=loopNr+1;){
+for(int loopNr=1;loopNr <= aantalHerhalingen;loopNr=loopNr+1;){
 	// Doe useful work
 }
 ```

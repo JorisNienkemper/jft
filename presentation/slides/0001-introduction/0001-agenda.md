@@ -7,4 +7,8 @@
 * Conditional statements
 * Loop statements
 * Methods
+* Debugging
+* Arrays
+* Exception handling
+* Objects
 

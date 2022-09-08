@@ -242,7 +242,7 @@ public void getRidOfSystemoutprintln(){
 ```java 
 // declareren we een methode
 void p(){
-	System.out.println("Tekst");
+	System.out.println("**************************");
 }
 //String input wordt parameter genoemd
 void p(String input){

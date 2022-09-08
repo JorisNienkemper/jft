@@ -22,7 +22,8 @@ void slaCijfersOpInGeheugen(){
 }
 ```
 
-* Jammer dat we elk stukje data met een unieke naam moeten aanspreken die weinig flexibel is
+* Jammer dat we elk stukje data met een unieke naam moeten aanspreken
+* Dit is niet echt flexibel
 
 ---
 
@@ -94,7 +95,7 @@ void eenArrayGevuldMetDierenNamen(){
 
 ---
 
-### Opdrachten
+### Opdrachten 1
 
 * Maak een array die 5 gehele getallen kan bevatten. Elk getal stelt het cijfer voor van een proefwerk waarbij maximaal 100 punten zijn te verdienen en minimaal 10;
     * Maak code die alle cijfers uitprint naar de console
@@ -110,6 +111,10 @@ void eenArrayGevuldMetDierenNamen(){
 * Maak van de code in de tests afzonderlijke methodes. Kopieer daartoe de test waar je de methode uit gaat destilleren en pas de naam van de test aan door de er de toevoeging **EnNuMetMethode** aan vast te plakken. Geef de code die je uit de test haalt en in een aparte methode stopt een naam die beschrijft wat de methode doet. Geef alle methodes die je zo maakt een parameter van een geschikt array type. Laat alle methodes ook een waarde retourneren die je vervolgens afdrukt in de test.Geef bij aanroep van de methode de array in de test mee als argument.
 
 * Controleer of de oude test en de nieuwe test waarin je de methode gebruikt nog steeds de zelfde waarde opleveren!
+
+---
+
+### Opdrachten 2
 
 * Maak in een nieuwe test een array van een geschikt type zodat je daar de namen in kunt opslaan van je klasgenoten.
 * Maak code die vervolgens de kortste naam uitprint

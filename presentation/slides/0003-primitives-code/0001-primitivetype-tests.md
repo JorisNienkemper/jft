@@ -1,21 +1,29 @@
+### Types
+
+---
+
 #### Hoe zouden jullie het concept variable beschrijven?
 
-	* een doosje/container
-	* is er voor een bepaalde tijd
+	* een doosje
+	* is er voor een beperkte tijd
 	* doosjes specifiek voor bepaalde inhoud
 	* kunt er iets instoppen/uithalen
 	* kunt het hergebruiken
+	* officieel noemen we een doosje een variabele
 
 
 ---
 
-## Typesystem Java
+## Type system Java
+
+* In Java moet je als je een variabele maakt aangeven wat je er in stopt 
+* Je zegt in Java: Je geeft het type op van de variabele
 
 * 2 hoofdtakken
-    * primitivetypes
-    * referencetypes
+    * primitive types
+    * reference types
 
-* Kijken eerst naar primitivetypes -> 8 in totaal
+* Kijken eerst naar primitive types -> 8 in totaal
 
 
 ---
@@ -35,9 +43,8 @@ import org.junit.Test;
 public class ExploreJavaPrimitives {
 
 	@Test
-	public void declaarIntVariabeleEnAssignDeWaarde10() {
+	void skeletonToRunCode() {
 		//Schrijf hier code
-
 	}
 }
 ```
@@ -45,28 +52,10 @@ public class ExploreJavaPrimitives {
 ---
 
 
-### Waarde past niet niet in doosje
-
-```java
-@Test
-public void doosjesKunnenNietOnbeperktGroteGetallenBevatten() {
-	// 4 bytes groot en 32 posities
-	int doosje;
-	
-	// 2 forward slashes is een line comment
-	// er is een max aan het getal dat we kunnen opslaan.
-	doosje=1000000000; // Dit lukt nog net
-	doosje=Long.MAX_VALUE; //Lukt niet
-
-}
-```
-
----
-
 ### Primitive types:
 
 * doosjes in java moeten getypeerd zijn
-	* d.w.z. java wil van te voren weten wat je er in stopt
+	* d.w.z. java wil van te voren weten wat je er in wilt stoppen
 
 * we zullen allereerst stilstaan bij de primitive types
 * later gaan we naar de reference types kijken
@@ -76,66 +65,104 @@ public void doosjesKunnenNietOnbeperktGroteGetallenBevatten() {
 
 
 
-### Kleinste type voor gehele getallen 
+### Kleinste doosje voor gehele getallen 
 
 * byte -> 8 bits
 
 ```java
 @Test
-public void kleinsteMaatVoorGeheleGetallen() {
-	byte doosjeVoor1Byte;
-	doosjeVoor1Byte=1;
-	System.out.println(doosjeVoor1Byte);
+void declareByteVariable(){
+    byte temperature;
+    temperature = 1; //8bits 0000 0001
+    System.out.println(temperature);
 }
-	
 ```
+
+* Is er ook een grootste waarde?
+* Wat is de kleinste waarde?
 
 ---
 
 
-### Byte MAX_VALUE
+### De grootste byte value (MAX_VALUE)
 
 
 ```java
 @Test
-public void omslagPuntVanMaximaleGrootteNaarMinimaleGrootte()  {
-	byte doosjeVoor1Byte=127;
-	System.out.println("Maximale byte waarde = " + doosjeVoor1Byte);
+void declareByteVariable(){
+    byte minimumtemperature;
+    minimumtemperature = -128; //laagste waarde
+	 //8bits 1000 0000
+    System.out.println(minimumtemperature);
+
+    byte maximumtemperature = 127;
+	//8bits 0111 1111
+    System.out.println(maximumtemperature);
 }
 ```
 
 ---
 
-## short 2* grotere capaciteit dan byte
+## short 
+
+* 2* grotere capaciteit dan byte
 
 ```java
-@Test
-public void shortIs2KeerZoGrootAlsByte() {
-	short shortDoosje=128;
-	
-	//Opmerkelijk genoeg gaat dit wel goed!
-	shortDoosje += 1;
-	
-	System.out.println(shortDoosje);
-}
+    @Test
+    void declareShortVariable(){
+        short minimumtemperature; 
+		//16 bits 0000 00000 0000 0001
+        minimumtemperature = -32_000; 
+		//In de buurt van de laagste waarde
+        System.out.println(minimumtemperature);
+
+        short maximumtemperature = 32_000;
+		//In de buurt van de maximale short value
+        System.out.println(maximumtemperature);
+        //Homework bereken 2 to the power 15
+    }
 ```
+
+---
+
+## int 
+
+* 2* grotere capaciteit dan short
+
+```java
+    @Test
+    void declareIntVariable(){
+        int minimumtemperature; 
+		//32 bits 1000 0000 0000 0000 0000 0000 0000 0000
+		minimumtemperature = -2000000000;
+		// Al die nullen zijn lastig te lezen
+        minimumtemperature = -2_000_000_000;
+        //Use underscores in int to indicate thousands
+        System.out.println(minimumtemperature);
+
+        int maximumtemperature = 2_000_000_000;
+		// In de buurt van MAX_VALUE van int
+        System.out.println(maximumtemperature);
+        //Homework bereken 2 to the power 31
+    }
+```
+
+* By default worden getallen zonder extra aanduiding door Java gezien als int's
 
 ---
 
 ##	 long (8 bytes groot)
 
 ```java
-
-@Test
-public void longTypeIs8BytesLang()  {
-	long longDoosje1=9_223_372_036_854_775_807L;
-	//long longDoosje2=1l; kleine l niet gebruiken
-	
-	long maxLongDoosje=Long.MAX_VALUE;
-	System.out.println(maxLongDoosje);
-}
-```
-* long's kunnen groot worden, merk de _ (underscore) op als 1000-tal scheider
+    @Test
+    void declareLongVariable(){
+        long minimumtemperature; //64 bits 
+        maximumtemperature = 2_100_100_100_100_000_000L;
+        //In de buurt van MAX_VALUE long
+		//Hoe spreek je dit getal uit?
+        System.out.println(maximumtemperature);
+        //Homework bereken 2 to the power 63
+    }
 
 ---
 
@@ -151,9 +178,112 @@ public void longTypeIs8BytesLang()  {
 ### Waarom heb je variabelen nodig
 
 * Berekeningen
+	* Verzin met de groep een berekening waarbij je gehele getallen gebruikt
+* Voor berekeningen heb je operatoren nodig
+	* Welke operatoren ken je?
+	* Hoe zou je operatoren beschrijven?
+	* Wat wordt er bedoeld met operanden?
+* Ken je regels waar operatoren aan moeten voldoen?
+
+```
+---
+### Berekening demo 1
 
 ```java
-//Verzin met de groep een berekening waarbij je gehele getallen gebruikt
+    @Test
+    void berekenTotaalAantalDeelnemers(){
+        int dotNetters = 25;
+        int javanen = 12;
+        int totaalDeelnemers = dotNetters + javanen;
+
+        System.out.println("Aantal deelnemers " + totaalDeelnemers);
+    }
+```
+
+---
+### Berekening demo 2
+
+```java
+   @Test
+    void berekenDeDistance(){
+        int velocity =10;
+        int time= 5;
+        int distance = velocity * time;
+        System.out.println("De afgelegde afstand " + distance);
+    }
+```
+
+---
+### Berekening demo 3
+
+```java
+    @Test
+    void aantalBenodigdeWielen(){
+        int auto = 32;
+        int wielen = 4;
+
+        //int aantalWielen = auto * wielen;
+
+        System.out.println("Aantal wielen =" + auto * wielen);
+    }
+```
+---
+### Berekening demo 4
+
+```java
+    @Test
+    void aantalBenodigdeWielenPlusMinimumVoorraad(){
+        int wielen = 32;
+        int autos = 4;
+        int minimumVoorraad = 16;
+		// We verdubbelen het aantal autos
+		// In de println autos*2
+		// Wat verwacht je?
+        System.out.println((wielen - minimumVoorraad)/autos*2);
+
+        //System.out.println((wielen - minimumVoorraad)/(autos*2));
+    }
+```
+---
+
+### Bestaat Meneer van Dalen nog?
+
+* Prioriteit van operatoren
+* Hoe zit het ook alweer?
+---
+
+### Berekening demo 5
+
+* Wat doet de modulo operator?
+
+```java
+    @Test
+    void operationsWithTheModuloOperator(){
+        System.out.println(1 % 2); //1
+        System.out.println(2 % 2); //0
+        System.out.println(3 % 2); //1
+        System.out.println(4 % 2); //0
+        System.out.println(5 % 2); //1
+        System.out.println(6 % 2); //0
+        System.out.println(7 % 2); //1
+    }
+```
+---
+
+### Berekening demo 6
+
+```java
+    @Test
+    void welkePrioriteitHeeftDeModuloOperator(){
+
+        System.out.println(3 * 11 % 3);
+        System.out.println((3 * 11) % 3); //0
+        System.out.println(3 * (11 % 3)); //6
+        System.out.println(11 % 3 * 3);
+        System.out.println((11 % 3) * 3); //0
+        System.out.println(11 % (3 * 3)); //6
+
+    }
 ```
 
 ---
@@ -165,15 +295,15 @@ public void longTypeIs8BytesLang()  {
 ```java
 
 @Test
-public void doublesHebben8BytesOmGebrokenGetallenteBeschrijven() {
-	double doubleDoosje1=0.2-0.1;
-	double doubleDoosje2=0.3-0.2;
-	System.out.println(doubleDoosje1-doubleDoosje2);
+void declareDoubleVariables(){
+    //Handig om te onthouden dat er bij doubles (ook bij floats) vaak sprake is van een afronding
+    double price = 1.9447;
+    double aantalLiters = 45.68;
+    double multiplier = 1.0E2; //1.0 keer 10 tot de macht 2 (100)
+
+    System.out.println("Verkoopprijs = " + price * aantalLiters* multiplier);
 }
 ```
-
-* Output in console: 2.7755575615628914E-17
-
 
 ---
 
@@ -181,22 +311,15 @@ public void doublesHebben8BytesOmGebrokenGetallenteBeschrijven() {
 ### Het float type
 
 ```java
-
 @Test
 public void byDefaultWordenGebrokenGetallenGezienAlsDouble(){
-	float floatDoosje=(float)1.0;
+	float floatDoosje=1.0F;
 	System.out.println(floatDoosje);
 }
-	
 ```
-* 1.0 zonder (float) wordt gezien als double -> 8 bytes -> past niet
 
----
+* 1.0 zonder (F) wordt gezien als double -> 8 bytes -> past niet
 
-### Waar gebruiken we doubles en floats voor?
-
-* Berekeningen
-* Bedenk allemaal een voorbeeld van een berekening waar je deze types gebruikt
 
 ---
 
@@ -232,8 +355,52 @@ public void opslaanVanVergelijkingen()  {
 
 ```
 
+### Vergelijkingen combineren 1
+ 
+* Soms moet een conditie aan meer vergelijking voldoen
+    1. Een persoon moet meerderjarig zijn **EN**
+    2. de Nederlandse nationaliteit bezitten
+
 ---
 
+#### Vergelijkingen combineren 2
+
+```java
+@Test
+public void beideVergelijkingenMoetenWaarZijn()  {
+	boolean heeftMinimumLeeftijd;
+	int minimumLeeftijd = 18;
+	int leeftijdPiet = 20;
+	heeftMinimumLeeftijd = leeftijdPiet >= minimumLeeftijd;
+	int minimumInkomen = 20_000;
+    int inkomenPiet = 25000;
+    boolean isBovenMinimumInkomen = inkomenPiet > minimumInkomen;
+    boolean voldoetAanBeideCriteria =
+    heeftMinimumLeeftijd && isBovenMinimumInkomen;
+    System.out.println(voldoetAanBeideCriteria);
+	
+} 
+
+```
+---
+
+
+#### Vergelijkingen combineren 3
+
+```java
+@Test
+public void eenVanDe2VergelijkingenMoetWaarZijn()  {
+	boolean heeftDagKaart = false;
+    boolean heeftMaandKaart = false;
+    boolean heeftJaarAbonnement = true;
+	boolean heeftGeldigeToegangsBewijs =
+    heeftDagKaart || heeftMaandKaart || heeftJaarAbonnement;
+    System.out.println(heeftGeldigeToegangsBewijs);
+	
+} 
+
+```
+---
 
 ### Het char type
 
